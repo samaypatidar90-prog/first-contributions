@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photographer Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: #ffe5b4; color: black; overflow-x: hidden; scroll-behavior: smooth; }
+
+    nav { position: fixed; top: 0; width: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(6px); color: white; padding: 15px; display: flex; justify-content: center; gap: 30px; z-index: 1000; }
+    nav a { color: white; text-decoration: none; font-weight: bold; transition: all 0.3s; position:relative; }
+    nav a::after { content:""; position:absolute; width:0%; height:2px; bottom:-5px; left:0; background:#ff9800; transition:width 0.3s; }
+    nav a:hover::after { width:100%; }
+
+    header { height: 100vh; background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; position: relative; transition: background-image 2s ease-in-out; }
+    header::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); }
+    header h1, header p, .color-toggle { position:relative; z-index:2; }
+
+    header h1 {
+      font-size: 4rem;
+      text-shadow:2px 2px 8px #000;
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 400% 400%;
+      animation: rgbFlow 8s linear infinite;
+    }
+
+    header p { font-size: 1.5rem; margin-top: 15px; }
+    .color-toggle { margin-top:20px; padding:10px 20px; background:#ff9800; color:white; border:none; border-radius:8px; cursor:pointer; transition:0.3s; }
+    .color-toggle:hover { background:#e68900; }
+
+    section { padding: 80px 10%; min-height: 100vh; }
+
+    .about { background: rgba(255,255,255,0.7); border-radius:20px; text-align: center; }
+    .about h2 { font-size: 2.5rem; margin-bottom: 20px; }
+    .about p { max-width:800px; margin:0 auto; line-height:1.6; font-size:1.1rem; margin-bottom:20px; }
+
+    .gallery { background: rgba(255,255,255,0.9); border-radius:20px; padding:60px 10%; }
+    .gallery h2 { text-align: center; margin-bottom: 30px; color: black; font-size:2.5rem; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .gallery-grid img { width: 100%; border-radius: 15px; transition: transform 0.5s ease, box-shadow 0.5s ease; cursor: pointer; }
+    .gallery-grid img:hover { transform: scale(1.07); box-shadow:0 8px 20px rgba(0,0,0,0.3); }
+
+    .contact { background: linear-gradient(135deg,#222,#444); color: white; text-align: center; border-radius:20px; padding:60px 10%; }
+    .contact h2 { margin-bottom: 20px; font-size:2.5rem; }
+    form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
+    input, textarea { padding: 12px; border: none; border-radius: 8px; }
+    button { background: #ff9800; color: white; border: none; padding: 15px; font-size: 1rem; cursor: pointer; border-radius: 8px; transition: background 0.3s, transform 0.3s; }
+    button:hover { background: #e68900; transform:translateY(-3px); }
+
+    footer { background: #111; color: white; padding: 20px; text-align: center; letter-spacing:1px; }
+
+    @keyframes rgbFlow { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+    .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#gallery">My Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <header id="header">
+    <h1 id="rgbName">John Doe Photography</h1>
+    <p>Capturing moments, one shot at a time</p>
+    <button class="color-toggle" id="colorToggle">Change RGB Colors</button>
+  </header>
+
+  <section id="about" class="about reveal">
+    <h2>About Me</h2>
+    <p>I am a passionate photographer with a love for nature and storytelling. My portfolio includes breathtaking landscapes, emotional wedding moments, candid street photography, and artistic portraits. Photography for me is not just a profession but a way of freezing emotions in time.</p>
+    <p>Traveling across mountains, rivers, and cities, I capture the beauty of nature and human connection. My vision is to create timeless memories for my clients and inspire others through my lens.</p>
+  </section>
+
+  <section id="gallery" class="gallery reveal">
+    <h2>My Work</h2>
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Photo 1">
+      <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" alt="Photo 2">
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" alt="Photo 3">
+      <img src="https://images.unsplash.com/photo-1493244040629-496f6d136cc3?auto=format&fit=crop&w=800&q=80" alt="Photo 4">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Photo 5">
+      <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80" alt="Photo 6">
+      <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80" alt="Photo 7">
+      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" alt="Photo 8">
+    </div>
+  </section>
+
+  <section id="contact" class="contact reveal">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 John Doe Photography | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    window.addEventListener('scroll', reveal);
+    function reveal(){
+      var reveals = document.querySelectorAll('.reveal');
+      for(var i = 0; i < reveals.length; i++){
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+        if(elementTop < windowHeight - elementVisible){
+          reveals[i].classList.add('active');
+        }
+      }
+    }
+
+    // RGB color change toggle
+    const rgbName = document.getElementById('rgbName');
+    const colorToggle = document.getElementById('colorToggle');
+    let colorSets = [
+      "linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet)",
+      "linear-gradient(90deg, cyan, magenta, lime, pink, purple, gold)",
+      "linear-gradient(90deg, #ff00cc, #333399, #00ffcc, #ff9900)"
+    ];
+    let currentSet = 0;
+    colorToggle.addEventListener('click', () => {
+      currentSet = (currentSet+1) % colorSets.length;
+      rgbName.style.background = colorSets[currentSet];
+      rgbName.style.webkitBackgroundClip = "text";
+      rgbName.style.webkitTextFillColor = "transparent";
+    });
+
+    // Background slideshow animation
+    const header = document.getElementById('header');
+    const backgrounds = [
+      "url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80')",
+      "url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80')",
+      "url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80')",
+      "url('https://images.unsplash.com/photo-1493244040629-496f6d136cc3?auto=format&fit=crop&w=1600&q=80')",
+      "url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=80')",
+      "url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1600&q=80')"
+    ];
+    let bgIndex = 0;
+
+    function changeBackground(){
+      bgIndex = (bgIndex+1) % backgrounds.length;
+      header.style.backgroundImage = backgrounds[bgIndex];
+    }
+    setInterval(changeBackground, 7000);
+
+    // Initialize first background
+    header.style.backgroundImage = backgrounds[0];
+  </script>
+</body>
+</html>
